@@ -1,5 +1,8 @@
 # Base
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![](https://jitpack.io/v/devloopsnet/Base.svg)](https://jitpack.io/#devloopsnet/Base)
+
 Base is an Easy to use boilerplate module for Android Applications!
 It has the following set of Helpers:
 * BaseApp
