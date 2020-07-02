@@ -76,10 +76,10 @@ inside ```onCreate();``` on Application Class
 ```BaseApp.setBaseUrl("https://example.com/apis/");```
 
 ##### 2- Create ApiRequester Class 
-find example class here [ApiRequester](https://github.com/OdeyFox)
+find example class here [ApiRequester](https://github.com/devloopsnet/Base/blob/master/app/src/main/java/com/devloops/activities/http/ApiRequester.java)
 
 ##### 3- Create ApiMethods Class  
-find example class here [ApiMethods](https://github.com/OdeyFox)
+find example class here [ApiMethods](https://github.com/devloopsnet/Base/blob/master/app/src/main/java/com/devloops/activities/http/ApiMethods.java)
 
 ##### 4- Create instance of ApiRequester
 ```
