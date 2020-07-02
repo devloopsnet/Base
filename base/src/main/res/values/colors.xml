@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#26bec9</color><!--//FF3A8598-->
+    <color name="colorPrimaryDark">#22aab4</color><!--//326e7c-->
+    <color name="colorAccent">#f6b402</color><!--//FF3A8598-->
+    <color name="black">#000000</color>
+    <color name="gray">#474747</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#F44336</color>
+
+    <color name="btn_text_color">#FFFFFF</color>
+    <color name="btn_background_color">#000000</color>
+    <color name="color_marker">#000000</color>
+    <color name="btn_clear_color">#FFC107</color>
+    <color name="btn_back_arrow_color">#FFFFFF</color>
+    <color name="search_area_background_color">#FFFFFF</color>
+    <color name="header_text_color">#FFFFFFFF</color>
+    <color name="header_background_color">#000000</color>
+    <color name="color_progress">#FFC107</color>
+    <color name="search_txt_color">#000000</color>
+</resources>
