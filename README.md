@@ -69,7 +69,7 @@ dependencies {
 * extend your activities with BaseActivity
 * extent your fragments with BaseFragment
 
-And your good to go...
+And you're good to go...
  
 ## To Use retrofit http client
 
