@@ -73,13 +73,13 @@ public class Alerts {
         Button btnPositive = dialog.findViewById(R.id.btn_positive);
         Button btnNegative = dialog.findViewById(R.id.btn_negative);
 
-        if (Validator.isEmptyOrNull(title))
+        if (!Validator.isEmptyOrNull(title))
             txtTitle.setText(title);
         else {
             txtTitle.setText(mContext.getString(R.string.app_name));
         }
 
-        if (Validator.isEmptyOrNull(body))
+        if (!Validator.isEmptyOrNull(body))
             txtBody.setText(body);
         else
             txtBody.setVisibility(View.GONE);
@@ -137,13 +137,13 @@ public class Alerts {
         Button btnPositive = dialog.findViewById(R.id.btn_positive);
         Button btnNegative = dialog.findViewById(R.id.btn_negative);
 
-        if (Validator.isEmptyOrNull(title))
+        if (!Validator.isEmptyOrNull(title))
             txtTitle.setText(title);
         else {
             txtTitle.setText(mContext.getString(R.string.app_name));
         }
 
-        if (Validator.isEmptyOrNull(body))
+        if (!Validator.isEmptyOrNull(body))
             txtBody.setText(body);
         else
             txtBody.setVisibility(View.GONE);
