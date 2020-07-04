@@ -85,7 +85,7 @@ public class Validator extends StringUtils {
      * @return boolean
      */
     public static boolean isEmptyOrNull(String str) {
-        return !TextUtils.isEmpty(str) && !str.equals("null");
+        return !(!TextUtils.isEmpty(str) && !str.equals("null"));
     }
 
     /**

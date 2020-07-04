@@ -8,9 +8,11 @@ import com.base.activities.BaseActivity;
 import com.base.utils.Api;
 import com.base.utils.Constants;
 import com.base.utils.Logger;
+import com.devloops.R;
 import com.devloops.activities.http.ApiMethods;
 import com.devloops.activities.http.ApiRequester;
 import com.devloops.activities.models.BaseModel;
+import com.devloops.activities.ui.fragments.BlankFragment;
 import com.devloops.databinding.ActivityMainBinding;
 
 import java.util.HashMap;
@@ -25,6 +27,17 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = this;
+    }
+
+    /**
+     * example of launching a fragment in the activity
+     */
+    private void attachFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, BlankFragment.newInstance())
+                .addToBackStack("blank-fragment")
+                .commit();
     }
 
     /**
@@ -68,5 +81,12 @@ public class MainActivity extends BaseActivity {
     protected View getView() {
         binder = ActivityMainBinding.inflate(getLayoutInflater());
         return binder.getRoot();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+            getSupportFragmentManager().popBackStackImmediate();
+        else super.onBackPressed();
     }
 }
