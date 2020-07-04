@@ -69,7 +69,7 @@ dependencies {
 * extend your activities with BaseActivity
 * extent your fragments with BaseFragment
 
-And your good to go...
+And you're good to go...
  
 ## To Use retrofit http client
 
@@ -78,17 +78,34 @@ inside ```onCreate();``` on Application Class
 
 ```BaseApp.setBaseUrl("https://example.com/apis/");```
 
-##### 2- Create ApiRequester Class 
+##### 2- Create ApiMethods Interface  
+* include retrofit dependencies in your build.gradle file
+```
+dependencies {
+	     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+	     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+}
+```
+* create inner interface for your api paths.
+* define routes like you normally do with retrofit with your desired model.
+
+find example here [ApiMethods](https://github.com/devloopsnet/Base/blob/master/app/src/main/java/com/devloops/activities/http/ApiMethods.java)
+
+##### 4- Create ApiRequester Class 
+* create varialbles for Context and ApiMethods.
+* create constructor to initialize context and ApiMethods.
+* Create a getInstance mehtod to get ApiRequester instance.
+* call your api's using ApiMethods instance.
+* create your own ApiCallback interface.
+
 find example class here [ApiRequester](https://github.com/devloopsnet/Base/blob/master/app/src/main/java/com/devloops/activities/http/ApiRequester.java)
 
-##### 3- Create ApiMethods Class  
-find example class here [ApiMethods](https://github.com/devloopsnet/Base/blob/master/app/src/main/java/com/devloops/activities/http/ApiMethods.java)
-
-##### 4- Create instance of ApiRequester
+##### 4- Create instance of ApiRequester in your activity or fragment.
 ```
         requester = ApiRequester.getInstance(context);
 ```
-Then call your api..
+Then call your api with the api's you defined in your ApiRequester class.
+
 ```
         requester.getTestRequest(new ApiRequester.ApiCallback() {
             @Override
