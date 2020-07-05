@@ -22,7 +22,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Image Loader using Glide, okhttp3 and Sharp
+ * Image Loader using Picasso, okhttp3 and Sharp
  *
  * @author Odey M. Khalaf <odey@devloops.net>
  */
