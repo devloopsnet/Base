@@ -2,6 +2,7 @@ package com.base.utils;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.base.R;
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * Custom Alerts Helper Class
@@ -22,7 +24,11 @@ import com.base.R;
 public class Alerts {
     private Dialog dialog;
     private Context mContext;
-    private String TAG = "DebugTag";
+    public static final int SNAKE_BAR_SHORT = -1;
+    public static final int SNAKE_BAR_LONG = 0;
+
+    public static final int TOAST_SHORT = 0;
+    public static final int TOAST_LONG = 1;
 
     public Alerts() {
     }
@@ -43,6 +49,19 @@ public class Alerts {
         centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
                 0, text.length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         Toast.makeText(mContext, centeredText, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * shows centered text
+     *
+     * @param text     text
+     * @param duration int
+     */
+    public void showToast(String text, int duration) {
+        Spannable centeredText = new SpannableString(text);
+        centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
+                0, text.length() - 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        Toast.makeText(mContext, centeredText, duration).show();
     }
 
     /**
@@ -170,6 +189,57 @@ public class Alerts {
 
         if (dialog != null)
             dialog.show();
+    }
+
+    /**
+     * shows Snake Bar with message only
+     *
+     * @param mainView View
+     * @param message  String
+     * @param duration int
+     */
+    public void showSnakeBar(View mainView, String message, int duration) {
+        Snackbar.make(mainView, message, Snackbar.LENGTH_LONG).setDuration(duration).show();
+    }
+
+    /**
+     * shows Snake Bar with message only
+     *
+     * @param mainView   View
+     * @param message    String
+     * @param actionText String
+     * @param duration   int
+     */
+    public void showSnakeBar(View mainView, String message, String actionText, int duration) {
+        Snackbar.make(mainView, message, Snackbar.LENGTH_LONG)
+                .setAction(actionText, null)
+                .setDuration(duration)
+                .show();
+    }
+
+    /**
+     * shows Snake Bar with acton callback
+     *
+     * @param mainView            View
+     * @param message             String
+     * @param textColorHash       String
+     * @param actionText          String
+     * @param actionTextColorHash String
+     * @param duration            int
+     * @param callback            Callback
+     */
+    public void showSnakeBar(View mainView, String message, String textColorHash, String actionText, String actionTextColorHash, String backGroundColor, int duration, Callback callback) {
+        Snackbar.make(mainView, message, Snackbar.LENGTH_LONG)
+                .setAction(actionText, callback::onActionClicked)
+                .setBackgroundTint(Color.parseColor(backGroundColor))
+                .setActionTextColor(Color.parseColor(actionTextColorHash))
+                .setTextColor(Color.parseColor(textColorHash))
+                .setDuration(duration)
+                .show();
+    }
+
+    public interface Callback {
+        void onActionClicked(View view);
     }
 
     public interface DialogInterface {
