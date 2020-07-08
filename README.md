@@ -10,8 +10,8 @@ It has the following set of Helpers:
 * BaseFragment
 * ApiClient (Retrofit http client)
 * Api (Volley http client for direct Web Calls)
-* Alerts
-* AppSession
+* Alerts (AlertDialog, Toast, SnakeBar)
+* AppSession (Ready to go, Shared Preferences Storage)
 * ConnectionDetector
 * DateTimeFormatter
 * ImageLoader (support any type of image including SVGs)
@@ -70,6 +70,13 @@ dependencies {
 * extent your fragments with BaseFragment
 
 And you're good to go...
+ 
+### MultiLingual App?
+ if you are creating an application with multiple languages, make sure to set the Accept Language.
+ where ever you are making the change just call this following line with your desired locale then recreate your activity to change the language at run time.
+ 
+```AppSession.setAccept_Language("en");``` and ```AppSession.getAccept_Language();``` to retrieve it.
+
  
 ## To Use retrofit http client
 
