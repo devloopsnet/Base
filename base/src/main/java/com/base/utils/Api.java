@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.android.volley.Request;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,9 +57,9 @@ public class Api {
     /**
      * Create GET request
      *
-     * @param url           Desired URL
-     * @param listener      Success callback
-     * @param errorListener Error callback
+     * @param url           String
+     * @param listener      Response<String>
+     * @param errorListener Error
      */
     public void get(String url, Response<String> listener, Error errorListener) {
         Logger.i(Constants.TAG, "url--> " + url);
@@ -73,10 +76,10 @@ public class Api {
     /**
      * Create POST request
      *
-     * @param url           Desired URL
-     * @param body          params
-     * @param listener      response listener
-     * @param errorListener error listener
+     * @param url           String
+     * @param body          Map<String, String>
+     * @param listener      Response<String>
+     * @param errorListener Error
      */
     public void post(String url, final Map<String, String> body, Response<String> listener, Error errorListener) {
         Logger.i(Constants.TAG, "url--> " + url);
@@ -100,12 +103,36 @@ public class Api {
     }
 
     /**
+     * Create POST request
+     *
+     * @param url           String
+     * @param body          JSONObject
+     * @param listener      Response<JSONObject>
+     * @param errorListener Error
+     */
+    public void post(String url, final JSONObject body, Response<JSONObject> listener, Error errorListener) {
+        Logger.i(Constants.TAG, "url--> " + url);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body, listener::response, error -> errorListener.error(Utils.with(context).getError(error))) {
+            @Override
+            public Map<String, String> getHeaders() {
+                return Api.this.getHeaders();
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+        };
+        Singleton.getInstance(context).addRequestQueue(request);
+    }
+
+    /**
      * Create PUT request
      *
-     * @param url           Desired URL
+     * @param url           String
      * @param body          Map<String, String> body
-     * @param listener      Success callback
-     * @param errorListener Error callback
+     * @param listener      Response<String>
+     * @param errorListener Error
      */
     public void put(String url, final Map<String, String> body, Response<String> listener, Error errorListener) {
         Logger.i(Constants.TAG, "url--> " + url);
@@ -131,9 +158,9 @@ public class Api {
     /**
      * Create DELETE request
      *
-     * @param url           Desired URL
-     * @param listener      Success callback
-     * @param errorListener Error callback
+     * @param url           String
+     * @param listener      Response<String>
+     * @param errorListener Error
      */
     public void delete(String url, Response<String> listener, Error errorListener) {
         Logger.i(Constants.TAG, "url--> " + url);
