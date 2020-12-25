@@ -4,14 +4,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import static android.net.NetworkInfo.State.CONNECTED;
-
 /**
  * @author Odey M. Khalaf <odey@devloops.net>
  */
 public class ConnectionDetector {
 
-    private Context _context;
+    private final Context _context;
 
     private ConnectionDetector(Context context) {
         this._context = context;
@@ -21,13 +19,30 @@ public class ConnectionDetector {
         return new ConnectionDetector(context);
     }
 
-    public boolean isConnectedToInternet() {
-        ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity != null) {
-            NetworkInfo[] info = connectivity.getAllNetworkInfo();
-            for (NetworkInfo anInfo : info)
-                if (anInfo.getState() == CONNECTED) return true;
+    public boolean isInternetConnected(Context context) {
+        boolean isWifiConnected = false;
+        boolean isMobileInternetConnected = false;
+        if (context != null) {
+            try {
+
+                ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                assert manager != null;
+                NetworkInfo activeNetwork = manager.getActiveNetworkInfo();
+                if (activeNetwork != null) { // connected to the internet
+                    if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                        // connected to wifi
+                        isWifiConnected = true;
+                    } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+                        // connected to the mobile provider's data plan
+                        isMobileInternetConnected = true;
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            Logger.d(Constants.TAG, "isInternetConnected() -> Context is null");
         }
-        return false;
+        return isWifiConnected || isMobileInternetConnected;
     }
 }

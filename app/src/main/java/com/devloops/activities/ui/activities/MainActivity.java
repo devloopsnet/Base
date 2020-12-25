@@ -46,8 +46,9 @@ public class MainActivity extends BaseActivity {
     private void getExampleRequestVolley() {
         Map<String, String> headers = new HashMap<>();
 
-        Api.with(context).addHeaders(headers).get("",
-                response -> {
+        Api.with(context)
+                .addHeaders(headers)
+                .get("", response -> {
 
                 }, error -> {
 

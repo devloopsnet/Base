@@ -93,6 +93,7 @@ public class Utils {
         Locale locale = new Locale(AppSession.getAccept_Language().toLowerCase());
         Locale.setDefault(locale);
         conf.setLocale(locale);
+        conf.locale = locale;
         res.updateConfiguration(conf, res.getDisplayMetrics());
     }
 

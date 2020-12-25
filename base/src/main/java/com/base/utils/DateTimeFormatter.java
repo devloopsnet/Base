@@ -13,17 +13,17 @@ import java.util.Locale;
  */
 public class DateTimeFormatter {
 
-    public static String getHrViewFormmate(Calendar calendar) {
+    public static String getHrViewFormat(Calendar calendar) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mma", Locale.ENGLISH);
         return simpleDateFormat.format(calendar.getTime());
     }
 
-    public static String getDateViewFormmate(Calendar calendar) {
+    public static String getDateViewFormat(Calendar calendar) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         return simpleDateFormat.format(calendar.getTime());
     }
 
-    public static String getDateViewFormateFromWS(String wsDate) {
+    public static String getDateViewFormatFromWS(String wsDate) {
         SimpleDateFormat simpleDateFormatWS = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date date = null;
         try {
@@ -39,7 +39,7 @@ public class DateTimeFormatter {
             return "";
     }
 
-    public static String getDateWsFormateFromView(String wsDate) {
+    public static String getDateWsFormatFromView(String wsDate) {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat simpleDateFormatWS = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
@@ -69,7 +69,7 @@ public class DateTimeFormatter {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static String getDateAndTimeWsFormateFromView(String s) {
+    public static String getDateAndTimeWsFormatFromView(String s) {
         SimpleDateFormat simpleDateFormatWS = new SimpleDateFormat("dd/MM/yyyy hh:mm aa");
         Date date = null;
         try {
@@ -86,7 +86,7 @@ public class DateTimeFormatter {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static String getDateAndTimeWsFormateFromWs(String s) {
+    public static String getDateAndTimeWsFormatFromWs(String s) {
         SimpleDateFormat simpleDateFormatWS = new SimpleDateFormat("yyyy-MM-dd KK:mm:00", Locale.ENGLISH);
         Date date = null;
         try {
@@ -103,7 +103,7 @@ public class DateTimeFormatter {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static String getDateViewFormateFromWsDateTime(String s) {
+    public static String getDateViewFormatFromWsDateTime(String s) {
         SimpleDateFormat simpleDateFormatWS = new SimpleDateFormat("yyyy-MM-dd HH:mm:00", Locale.ENGLISH);
         Date date = null;
         try {
@@ -119,7 +119,7 @@ public class DateTimeFormatter {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public static String getTimeViewFormateFromWsDateTime(String s) {
+    public static String getTimeViewFormatFromWsDateTime(String s) {
         SimpleDateFormat simpleDateFormatWS = new SimpleDateFormat("yyyy-MM-dd HH:mm:00", Locale.ENGLISH);
         Date date = null;
         try {

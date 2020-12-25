@@ -3,7 +3,6 @@ package com.base.utils;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 
@@ -39,6 +38,7 @@ public class Api {
         if (headers == null) {
             this.headers = new HashMap<>();
         } else {
+            this.headers = new HashMap<>();
             this.headers.putAll(headers);
         }
         return this;
